@@ -21,18 +21,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Grant execute permission to Gradle wrapper
-        run: chmod +x ./gradlew
-
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: corretto
-
-      - name: Build WAR
-        run: ./gradlew clean war -PBUILD_NUMBER=${{ env.VERSION }}
-
       - name: Commit and push to docs folder
         run: |
           git config --global user.name "GitHub Actions"
